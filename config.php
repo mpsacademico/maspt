@@ -1,5 +1,5 @@
 <?php
-	define(DEBUG, true);
+	define("DEBUG", true);
 
 	if(DEBUG == true) {
 		ini_set('display_errors', 1);
