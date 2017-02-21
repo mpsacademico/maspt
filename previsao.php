@@ -1,20 +1,13 @@
 <?php
 require_once("config.php");
-if(DEBUG == true) {
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
-}
 
 $trs = array("json","xml");
-$cl = isset($_GET['cl']) ? $_GET['cl'] : NULL; //código localidade
-$tr = isset($_GET['tr']) ? $_GET['tr'] : NULL; //tipo retorno
+$cl = isset($_GET['cl']) ? $_GET['cl'] : NULL; //código da localidade
+$tr = isset($_GET['tr']) ? $_GET['tr'] : NULL; //tipo de retorno
 $ca = isset($_GET['ca']) ? $_GET['ca'] : NULL; //chave de acesso
-
 
 require_once("src/autenticacao_classe.php");
 $aut = new Autenticacao($ca);
-
 
 if(is_null($tr) || empty($tr)){
 	$tr = "json";
@@ -42,8 +35,6 @@ $dados = file_get_contents("http://servicos.cptec.inpe.br/apptempo/".$cl);
 
 	}
 }
-
-
 else{
 	echo "Nenhuma localidade informada!";
 }
