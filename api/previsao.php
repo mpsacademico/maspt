@@ -9,7 +9,9 @@ $ca = isset($_GET['ca']) ? $_GET['ca'] : NULL; //chave de acesso
 //require_once("src/autenticacao_classe.php");
 //$aut = new Autenticacao($ca);
 
+//verificação de entrada de dados obrigatórios e opcionais
 if(!empty($ca)) {
+	//autenticação da chave no banco de dados
 	//buscar no banco de dados se a chave existe e está válida
 	if(true){
 	}else{
@@ -34,7 +36,10 @@ if(is_null($cl)){
 	die();
 }
 
+//requisição para o servidor de dados inicial
 $dados = file_get_contents("http://servicos.cptec.inpe.br/apptempo/".$cl);
+
+//configuração do tipo de saída
 if(strcmp($tr,"xml")==0){
 	header("Content-type: text/xml");
 	echo $dados;
